@@ -32,17 +32,35 @@ def print_nodes(node, val=''):
     if not node.left and not node.right:
         print(f"{node.symbol}->{newval}")
 
-
-chars = ['a', 'b', 'c', 'd', 'e', 'f']
-freq = [5, 9, 12, 13, 16, 45]
+n=int(input("Enter the no of characters: "))
+chars = [n]
+freq = [n]
 nodes = []
-for x in range(6):
+for x in range(n):
+    C=str(input("Enter the character: "))
+    chars.append(C)
+for x in range(n):
+    f=int(input("Enter the frequencies: "))
+    freq.append(f)
+for x in range(n):
     heapq.heappush(nodes, Node(freq[x], chars[x]))
+    print("###")
 while len(nodes) > 1:
     left = heapq.heappop(nodes)
     right = heapq.heappop(nodes)
+    print("#")
     left.huff = 0
     right.huff = 1
-    newNode = Node(left.freq+right.freq, left.symbol+right.symbol, left, right)
+    print("##")
+    SY=(left.symbol+right.symbol)
+    print(left.symbol)
+    print(right.symbol)
+    print("SY: ",SY)
+    FR=left.freq+right.freq
+    print(left.freq)
+    print(right.freq)
+    print("FR:",FR)
+    newNode = Node(FR, SY, left, right)
+    print("##$#")
     heapq.heappush(nodes, newNode)
 print_nodes(nodes[0])
