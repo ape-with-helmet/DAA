@@ -1,17 +1,22 @@
+'''Imports sys.'''
 import sys
 class Graph:
+    '''Introduces graphs.'''
     def __init__(self, vertices):
         self.V = vertices
         self.graph = [[0 for _ in range(vertices)] for _ in range(vertices)]
 def add_edge(self, u, v, weight):
+    '''Adds edges.'''
     self.graph[u][v] = weight
     self.graph[v][u] = weight
 def print_mst(self, parent):
+    '''Prints.'''
     print("Thermal Station   --   Connected to   -->   Thermal Station   Cost")
-    for i in range(1, self.V):
+    for k in range(1, self.V):
         print(
-            f"   {i}                    --                    {parent[i]}                 {self.graph[i][parent[i]]}")
+            f"   {k}                    --                    {parent[k]}                 {self.graph[k][parent[k]]}")
 def prim_mst(self):
+    '''Prim algorithm.'''
     key = [sys.maxsize] * self.V
     parent = [None] * self.V
     key[0] = 0
