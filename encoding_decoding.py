@@ -31,13 +31,20 @@ def print_nodes(node, val=''):
     if not node.left and not node.right:
         print(f"{node.symbol}->{newval}")
 
-def encoding(ele,freq,code):
+def encoding(ele,f_y,codeword):
     '''Encoding part.'''
     print("encoding begins...")
-    for i in range (len(code)):
-        for j in range (len(freq)):
-            if code[i:j]==freq[j]:
-
+    final=[]
+    le1=len(codeword[0])
+    le2=len(f_y)
+    print(le1,le2)
+    k=0
+    found=False
+    i=0
+    while i<le1:
+        k=i
+        
+    print(final)
 
 def decoding():
     '''Decoding part.'''
@@ -63,11 +70,11 @@ if ch==1:
     print_nodes(nodes[0])
 elif ch==2:
     elements=input('').split(" ")
-    freq=[int(i) for i in input('').split(" ")]
+    freq=input('').split(" ")
     code=input('').split(" ")
     encoding(elements,freq,code)
 elif ch==3:
-    m
+    print(".")
 else:
     print("EXITING PROGRAM...")
 
