@@ -39,17 +39,23 @@ def find_optimal_route(graph,start,destination):
     route.reverse()
     return route
 #graph[]
-graph={
-    'A':{'B':3,'C':99,'D':7,'E':99},
-    'B':{'A':3,'C':99,'D':7,'E':99},
-    'C':{'A':99,'C':99,'D':7,'E':99},
-    'D':{'A':7,'C':99,'D':7,'E':99},
-    'E':{'A':3,'C':99,'D':7,'E':99},
-}
-start_location='C'
-destination_location='A'
-optimal_route=find_optimal_route(graph,start_location,destination_location)
-if optimal_route is None:
-    print("No valid route")
-else:
-    print("Optimal route: ",'->'.join(optimal_route))
+graph = {}
+n=int(input("Enter the no of toll stations: "))
+for i in range(0,n):
+    name = input("Enter the current Station name: ")
+    station={}
+    for j in range(0,n-1):
+        s_name=input("Enter the next station name: ")
+        s_dist=int(input(f"Enter the distance from {name} to {s_name}: "))
+        station[s_name]=s_dist
+    graph[name]=station
+g=1
+while g!=0:
+    start_location=input("Enter the starting station: ")
+    destination_location=input("Enter the destination station: ")
+    optimal_route=find_optimal_route(graph,start_location,destination_location)
+    if optimal_route is None:
+        print("No valid route")
+    else:
+        print("Optimal route: ",'->'.join(optimal_route))
+    g=int(input("If you wish to not check other routes, press 0.\nPress any other number to repeat...\nEnter your choice"))
