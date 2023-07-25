@@ -22,5 +22,15 @@ def is_safe(Board,row,col,N):
 
 def solve_n_queens_utils(board,col,N,solutions):
     if col == N:
-        
-         
+        solution=[]
+        for i in range(N):
+            row = []
+            for j in range(N):
+                row.append(board[i][j])
+            solution.append(row)
+        solutions.append(solution)
+        return
+    for i in range(N):
+        if is_safe(board,i,col,N):
+            board[i][col]=1
+            solve_n_queens_utils(board,col,N,solutions)
