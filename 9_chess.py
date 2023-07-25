@@ -1,4 +1,4 @@
-# Design and imoplement for a given chess board having NxN cells. Place N queens on the board such that no queen attacks any other queen. if it is possible to place all the N queens in such a way, then print N lines having N queens. If there is more than one sulution of placing the queens, oprint them all. If it is not possible to place all the of the N queens in the desired way, then print "Not possible"
+# 9. Design and imoplement for a given chess board having NxN cells. Place N queens on the board such that no queen attacks any other queen. if it is possible to place all the N queens in such a way, then print N lines having N queens. If there is more than one sulution of placing the queens, oprint them all. If it is not possible to place all the of the N queens in the desired way, then print "Not possible"
 
 def is_safe(board,row,col,N):
     for i in range(col):
