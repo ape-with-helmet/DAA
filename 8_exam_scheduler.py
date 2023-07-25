@@ -45,3 +45,6 @@ graph.add_edge('phy','chem')
 graph.add_edge('phy','bio')
 minimum_time_slots=graph.get_minimum_time_slots()
 print(f"Minimum time slots needed: {minimum_time_slots}")
+
+
+#Minimum time slots needed: 3
