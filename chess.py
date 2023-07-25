@@ -16,4 +16,11 @@ def is_safe(Board,row,col,N):
     while j>= 0 and i < N:
         if board[i][j]==1:
             return False
+        i+=1
+        j-=1
+    return True
+
+def solve_n_queens_utils(board,col,N,solutions):
+    if col == N:
+        
          
