@@ -1,29 +1,49 @@
-#design an application for drilling an optimal printed circuit board . To drill two holes of different diameters consecutively, the head of the machine has to move to a toolbox and change the drilling equipment. this is quite time consuming. Thus it is clear that one has to choose some diameter, drill all holes of same diameter, change the drill, drill holes of the next diameter, etc. Thu this drilling problem has to minimize the travel time for the machine head. Find the optimal time to drill the circuit board.
-import networkx as nx
-def get_distances(num_nodes):
-    distances={}
-    for i in range(1,num_nodes+1):
-        for j in range(i+1,num_nodes+1):
-            distance=float(input(f"Enter the distances between node {i} and node {j}: "))
-            distances[(i,j)]=distance
-            distances[(j,i)]=distance
-    return distances
-def tsp_optimal_drilling(distances):
-    G=nx.Graph()
-    G.add_weighted_edges_from((i,j,distances)for(i,j),distance in distances.items())
-    return nx.approximation.traveling_salesman_problem(G,cycle=True)
-    #return optimal_order
-def calculate_optimal_cost(drill_order,distances):
-    total_cost=sum(distances[(drill_order[i],drill_order[i+1])]for i in range(len(drill_order)-1))
-    return total_cost
-if __name__=="__main__":
-    while True:
-        num_nodes=int(input("Enter the no of drill holes (nodes): "))
-        distances=get_distances(num_nodes)
-        optimal_order=tsp_optimal_drilling(distances)
-        optimal_cost=calculate_optimal_cost(optimal_order,distances)
-        print("Optimal drilling order: ",optimal_order)
-        print("Optimal cost: ",optimal_cost)
-        t=input("Do you wish to run program from the beginning? (PRESS 1): ")
-        if t!=1:
-            break
+def is_safe(board, row, col, N):
+    for i in range(col):
+        if board[row][i]==1:
+            return False
+    i=row
+    j=col
+    while i>=0 and j>=0:
+        if board[i][j]==1:
+            return False
+        i-=1
+        j-=1
+    i=row
+    j=col
+    while j>=0 and i<N:
+        if board[i][j]==1:
+            return False
+        i+=1
+        j-=1
+    return True
+def solve_n_queens_util(board, col, N, solutions):
+    if col==N:
+        solution=[]
+        for i in range(N):
+            row=[]
+            for j in range(N):
+                row.append(board[i][j])
+            solution.append(row)
+        solutions.append(solution)
+        return
+    for i in range(N):
+        if is_safe(board, i, col, N):
+            board[i][col]=1
+            solve_n_queens_util(board, col+1, N, solutions)
+            board[i][col]=0
+def solve_n_queens(N):
+    board=[[0]*N for _ in range(N)]
+    solutions=[]
+    solve_n_queens_util(board,0,N,solutions)
+    if len(solutions)==0:
+        print("Not possible")
+    else:
+        for solution in solutions:
+            for row in solution:
+                for cell in row:
+                    print("Q"if cell==1 else ".",end=" ")
+                print( )
+            print( )
+N=int(input("Enter the no of queens:"))
+solve_n_queens(N)
