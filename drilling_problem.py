@@ -26,3 +26,14 @@ if __name__=="__main__":
         try_again=input("Try again?(y/n)")
         if try_again!="y":
             break
+
+# Enter the number of frill holes (nodes):4
+# Enter the distance btw node 1 and node 2:10
+# Enter the distance btw node 1 and node 3:5
+# Enter the distance btw node 1 and node 4:99
+# Enter the distance btw node 2 and node 3:2
+# Enter the distance btw node 2 and node 4:8
+# Enter the distance btw node 3 and node 4:7
+# Optimal drilling order: [1, 3, 4, 2, 3, 1]
+# Total optimal cost: 27.0
+# Try again?(y/n)n
