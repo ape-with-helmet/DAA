@@ -7,12 +7,12 @@ def short_path(graph,n):
                         continue
                     if graph[i][k]+graph[k][j]<graph[i][j]:
                         graph[i][j]=graph[i][k]+graph[k][j]
-#     for i in range(n):
-#         for j in range(i,n):
-#             if i==j:
-#                 continue
-#             print(f"Cost of electrification between {i} and {j} is: ",graph[i][j])
-    print("Now enter which plant you want to start connecting")
+                        graph[j][i]=graph[i][k]+graph[k][j]
+    for i in range(n):
+        for j in range(i,n):
+            if i==j:
+                continue
+            print(f"Cost of electrification between {i} and {j} is: ",graph[i][j])
 n=int(input("Enter the no of power plants: "))
 graph=[[0 for i in range(n)]for j in range(n)]
 print("Enter the costs of electrification: ")
